@@ -62,33 +62,6 @@ def analisar_serie(caminho_arquivo, nome_serie, freq, col_data, col_valor, model
         plt.savefig(f'{nome_serie}_decomposicao.png')
         plt.close()
         print(f"Gráfico da decomposição salvo como {nome_serie}_decomposicao.png")
-
-        # 5. Respostas às Perguntas (em comentários no código)
-
-        # --- Respostas para {nome_serie} ---
-
-        # a. A série possui Tendência? Se sim, que tipo?
-        # Resposta:
-        # (Analisar o gráfico de Tendência da decomposição)
-        # Se a linha de tendência for ascendente, é uma tendência de crescimento.
-        # Se for descendente, é uma tendência de queda.
-        # Se for relativamente plana, não há tendência significativa.
-
-        # b. A série possui Sazonalidade? Se sim, qual o período que ela acontece?
-        # Resposta:
-        # (Analisar o gráfico de Sazonalidade da decomposição)
-        # Se o gráfico de Sazonalidade mostrar um padrão repetitivo em intervalos regulares,
-        # a série possui sazonalidade. O período é a duração desse padrão (ex: 12 meses para dados mensais).
-
-        # c. A série apresenta um Ciclo? Se sim, por qual razão?
-        # Resposta:
-        # (Analisar o gráfico de Resíduo e a série original, procurando por flutuações
-        # de longo prazo que não são sazonalidade)
-        # Ciclos são flutuações de longo prazo (geralmente > 1 ano) e não-periódicas.
-        # Na decomposição clássica, o Ciclo está misturado com o Resíduo.
-        # A presença de um ciclo é mais uma interpretação do domínio do que uma detecção
-        # puramente estatística na decomposição simples.
-
         print(f"Análise de {nome_serie} concluída. Verifique os gráficos e o código para as respostas detalhadas.")
 
     except Exception as e:
@@ -125,28 +98,9 @@ analisar_serie(
     modelo_decomposicao='additive'
 )
 
-# --- Respostas Detalhadas (para serem inseridas após a execução e análise dos gráficos) ---
+      # 5. Respostas às Perguntas (em comentários no código)
 
-# --- airtravel.csv ---
-
-# a. A série possui Tendência? Se sim, que tipo?
-# Resposta: Sim, a série possui uma **Tendência de Crescimento** (ascendente).
-# Isso indica que o número de passageiros de companhias aéreas tem aumentado
-# consistentemente ao longo do tempo.
-
-# b. A série possui Sazonalidade? Se sim, qual o período que ela acontece?
-# Resposta: Sim, a série possui **Sazonalidade**. O período é **anual (12 meses)**.
-# Isso é evidente pelos picos e vales que se repetem a cada 12 pontos de dados,
-# refletindo a variação de viagens ao longo dos meses do ano (ex: mais viagens no verão).
-
-# c. A série apresenta um Ciclo? Se sim, por qual razão?
-# Resposta: A decomposição clássica não separa o ciclo do resíduo. No entanto,
-# ao observar a série original e a tendência, não há flutuações de longo prazo
-# (maiores que 1 ano e não-sazonais) claramente definidas que caracterizem um ciclo
-# econômico ou de negócios. O que se observa é uma tendência de crescimento forte.
-# Portanto, **não é evidente um Ciclo** distinto da Tendência e Sazonalidade.
-
-# --- co2_emissions.csv ---
+        # --- co2_emissions.csv ---
 
 # a. A série possui Tendência? Se sim, que tipo?
 # Resposta: Sim, a série possui uma **Tendência de Crescimento** (ascendente).
@@ -165,3 +119,24 @@ analisar_serie(
 # entre a atividade econômica (produção industrial, transporte) e as emissões de CO2.
 # A decomposição simples pode não isolar o ciclo perfeitamente, mas a interpretação
 # do domínio sugere sua presença.
+
+   # --- co2_emissions.csv ---
+
+# a. A série possui Tendência? Se sim, que tipo?
+# Resposta: Sim, a série possui uma **Tendência de Crescimento** (ascendente).
+# Isso indica que as emissões de CO2 têm aumentado consistentemente ao longo dos anos.
+
+# b. A série possui Sazonalidade? Se sim, qual o período que ela acontece?
+# Resposta: **Não**, a série não possui Sazonalidade.
+# Como os dados são anuais, a sazonalidade (que é um padrão que se repete em períodos
+# menores que um ano, como mensal ou trimestral) não pode ser observada ou calculada.
+
+# c. A série apresenta um Ciclo? Se sim, por qual razão?
+# Resposta: Sim, é possível que a série apresente **Ciclos** relacionados a **ciclos econômicos**
+# globais (ex: recessões e expansões). Estes ciclos se manifestam como flutuações
+# na tendência de longo prazo (ex: períodos de crescimento mais lento ou até queda
+# seguidos por períodos de crescimento mais rápido). A razão é a correlação
+# entre a atividade econômica (produção industrial, transporte) e as emissões de CO2.
+# A decomposição simples pode não isolar o ciclo perfeitamente, mas a interpretação
+# do domínio sugere sua presença.
+
